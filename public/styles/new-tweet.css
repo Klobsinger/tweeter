@@ -82,17 +82,17 @@ article.tweet footer {
   display: flex;
 }
 
-footer .right i {
+footer .symbol i {
   color: blue;
   margin-right: 5px;
 }
 
-footer .right i:hover {
+footer .symbol i:hover {
   color: rgb(196, 156, 25);
   margin-right: 5px;
 }
 
-.middle p {
+.tweet  {
   padding-left: 20px;
 }
 
