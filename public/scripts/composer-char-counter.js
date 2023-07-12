@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('ready to script')
   const maxLength = 140;
 
   $('#tweet-text').on('input', function() {
@@ -19,7 +18,7 @@ $(document).ready(function() {
       $('.counter').removeClass('low');
       $('.counter').addClass('negative');
     }
-      if (remainingLength >= 0) {
+    if (remainingLength >= 0) {
       $('.counter').removeClass('negative');
     }
   });
