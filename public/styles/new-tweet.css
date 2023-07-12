@@ -42,3 +42,60 @@ button[type="submit"] {
 .counter.low {
   color: orange;
 }
+
+article.tweet {
+  font-weight: bold;
+  margin-top: 80px;
+  border: 4px solid black;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+article.tweet:hover {
+  box-shadow: 10px 5px 5px rgba(139, 131, 172, 0.397);
+}
+
+article.tweet header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.left-section img {
+  margin-right: 20px;
+}
+
+article.tweet footer {
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  border-top: 4px solid black;
+  display: flex;
+}
+
+footer .right i {
+  color: blue;
+  margin-right: 5px;
+}
+
+footer .right i:hover {
+  color: rgb(196, 156, 25);
+  margin-right: 5px;
+}
+
+.middle p {
+  padding-left: 20px;
+}
+
+.hashtag {
+  color:rgba(139, 131, 172, 0.568)
+}
