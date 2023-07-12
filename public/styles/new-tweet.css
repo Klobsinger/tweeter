@@ -36,3 +36,9 @@ button[type="submit"] {
 }
 
 
+.counter.negative {
+  color: red;
+}
+.counter.low {
+  color: orange;
+}
