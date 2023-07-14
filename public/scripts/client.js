@@ -17,11 +17,21 @@ $(document).ready(function() {
  */
   $('form').on('submit', function(event) {
     event.preventDefault();
+    const tweetText = $('#tweet-text').val()
+    if (tweetText.length === 0) {
+      alert('tweet empty')
+      return false
+    }
+    if (tweetText.length > 140) {
+      alert('tweet over 140 characters')
+      return false
+    } else {
     const formData = $(this).serialize();
     $.post('/tweets', formData)
       .then(function() {
         loadTweets();
       });
+    }
   });
 
   /**
