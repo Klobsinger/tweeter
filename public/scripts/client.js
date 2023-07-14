@@ -4,37 +4,33 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-// Test / driver code (temporary). Eventually will get this from the server.
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+// This script handles form submission, tweet creation, rendering tweets, and loading tweets from the server.
+// It utilizes jQuery and timeago.js for various functionalities.
 
 $(document).ready(function() {
+
+  /**
+ * Handles the form submission event and posts the serialized form data to the server.
+ *
+ * @param {Event} event - The form submission event.
+ * @returns {void}
+ */
+  $('form').on('submit', function(event) {
+    event.preventDefault();
+    const formData = $(this).serialize();
+    $.post('/tweets', formData)
+      .then(function() {
+        loadTweets();
+      });
+  });
+
+  /**
+ * Creates a tweet element based on the provided tweet data.
+ *
+ * @param {Object} tweet - The tweet object containing user and content information.
+ * @returns {jQuery} $tweet - The jQuery element representing the tweet HTML structure.
+ */
   const createTweetElement = function(tweet) {
-    
     const $tweet = $(`
   <article class="tweet">
     <header>
@@ -61,12 +57,34 @@ $(document).ready(function() {
 `);
     return $tweet;
   };
-
-  const renderTweets = function(tweets) {
-    tweets.forEach(tweet => {
-      const $tweet = createTweetElement(tweet);
-      $('#tweet-container').append($tweet);
+/**
+ * Renders the tweets by iterating over an array of user objects.
+ *
+ * @param {Object[]} users - An array of user objects containing tweet data.
+ * @returns {void}
+ */
+  const renderTweets = function(users) {
+    const container = $('#tweet-container')
+    container.empty()
+    users.forEach(user => {
+      const $user = createTweetElement(user);
+      container.append($user);
     });
   };
-  renderTweets(data);
+/**
+ * Loads tweets by making an AJAX request to the server and updates the tweet timestamps using timeago.js.
+ *
+ * @returns {void}
+ */
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+      .then(function(users) {
+        users.forEach(function(user) {
+          const timeSince = timeago.format(user.created_at);
+          user.created_at = timeSince;
+        });
+        renderTweets(users);
+      });
+  };
+  loadTweets();
 });
