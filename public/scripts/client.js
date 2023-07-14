@@ -78,7 +78,7 @@ $(document).ready(function() {
     container.empty()
     users.forEach(user => {
       const $user = createTweetElement(user);
-      container.append($user);
+      container.prepend($user);
     });
   };
 /**
