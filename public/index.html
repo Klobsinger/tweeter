@@ -23,7 +23,6 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
   </head>
 
   <body>
@@ -31,7 +30,7 @@
     <nav>
       <span class="logo" style="font-size: xx-large;">tweeter</span>
       <div class="nav-right">
-        <div class="new-tweet"><strong>Write</strong> a new tweet</div>
+        <div class="write-tweet"><strong>Write</strong> a new tweet</div>
         <i class="fa-solid fa-angles-down"></i>
       </div>
     </nav>
@@ -57,27 +56,7 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
-        <article class="tweet">
-          <header>
-            <div class="left-section">
-              <img src="https://i.imgur.com/73hZDYK.png" alt="Profile Image">
-              <p>Newton</p>
-            </div>
-            <p class="hashtag">@Sirlsaac</p>
-          </header>
-          <div class="tweet">
-          <p>If i have seen further it is by standing on the shoulders of giants</p>
-        </div>
-          <footer> 
-            <div class="left">
-             <span>10 days ago</span>
-            </div>
-            <div class="symbol">
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-sharp fa-solid fa-heart"></i>
-          </div>
-          </footer>
+        <article class="tweet-container" id="tweet-container">
         </article>
       </section>
     </main>
