@@ -21,20 +21,36 @@ $(document).ready(function() {
  */
   $('form').on('submit', function(event) {
     event.preventDefault();
-    const tweetText = $('#tweet-text').val()
+    const errorMessage = $('.error-message');
+    const errorText = errorMessage.find('.error-text');
+    const tweetText = $('#tweet-text').val();
+    //if user inputs a blank tweet
     if (tweetText.length === 0) {
-      alert('tweet empty')
-      return false
-    }
+      //removing show class to allow error boxes to play limitlessly
+      errorMessage.removeClass('show');
+      //adding class show which uses css to reveal error box
+      //setTimeout used to prevent removing class and adding class instantly causing error box issues
+      setTimeout(function() {
+        errorMessage.addClass('show');
+      }, 10);
+      //applying unique error message for empty tweet
+      errorText.text('ERROR Empty Tweet ya Dingus');
+    }   //if user inputs more then tweet limit
     if (tweetText.length > 140) {
-      alert('tweet over 140 characters')
-      return false
+      errorMessage.removeClass('show');
+      setTimeout(function() {
+        errorMessage.addClass('show');
+      }, 10);
+      //applying unique error message for tweet above char limit
+      errorText.text('ERROR Tweets too long ya Dingus');
     } else {
-    const formData = $(this).serialize();
-    $.post('/tweets', formData)
-      .then(function() {
-        loadTweets();
-      });
+      const formData = $(this).serialize();
+      $.post('/tweets', formData)
+        .then(function() {
+          //removing css class apon posting hidding error message
+          errorMessage.removeClass('show');
+          loadTweets();
+        });
     }
   });
 
@@ -78,8 +94,8 @@ $(document).ready(function() {
  * @returns {void}
  */
   const renderTweets = function(users) {
-    const container = $('#tweet-container')
-    container.empty()
+    const container = $('#tweet-container');
+    container.empty();
     users.forEach(user => {
       const $user = createTweetElement(user);
       container.prepend($user);
