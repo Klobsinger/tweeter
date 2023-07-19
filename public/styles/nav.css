@@ -25,6 +25,7 @@ nav {
 }
 
 div.nav-right {
+  cursor: pointer;
   padding-top: 30px;
 }
 
