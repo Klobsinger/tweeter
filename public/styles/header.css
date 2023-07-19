@@ -1,11 +1,11 @@
-header.page-header {
+.page-header {
   background-color: #cc8800;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   height: 520px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 7em;
   width: 100%;
 }
@@ -15,3 +15,10 @@ header.page-header {
   color: #ffffff;
 }
 
+@media only screen and (min-width: 768px) {
+  .page-header {
+    margin-top: 20px;
+    width: 40%;
+    margin-left: 2%;
+  }
+}
