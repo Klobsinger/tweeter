@@ -23,9 +23,9 @@ $(document).ready(function() {
     event.preventDefault();
     const errorMessage = $('.error-message');
     const errorText = errorMessage.find('.error-text');
-    const tweetText = $('#tweet-text').val();
+    const tweetText = $('#tweet-text');
     //if user inputs a blank tweet
-    if (tweetText.length === 0) {
+    if (tweetText.val().length === 0) {
       //removing show class to allow error boxes to play limitlessly
       errorMessage.removeClass('show');
       //adding class show which uses css to reveal error box
@@ -36,7 +36,7 @@ $(document).ready(function() {
       //applying unique error message for empty tweet
       errorText.text('ERROR Empty Tweet ya Dingus');
     }   //if user inputs more then tweet limit
-    if (tweetText.length > 140) {
+    if (tweetText.val().length > 140) {
       errorMessage.removeClass('show');
       setTimeout(function() {
         errorMessage.addClass('show');
@@ -47,6 +47,15 @@ $(document).ready(function() {
       const formData = $(this).serialize();
       $.post('/tweets', formData)
         .then(function() {
+          // Clear the textarea after posting is successful 
+        $('#tweet-text').val('');
+        //resets counter to max length after posting
+        $('.counter').text(140)
+         // removes the css classes low and negative so counter css colors reset apon tweeting
+          $('.counter').removeClass('low');
+          $('.counter').removeClass('negative');
+          //after tweeting focuses text input form again for rapid tweeting
+          tweetText.focus();
           //removing css class apon posting hidding error message
           errorMessage.removeClass('show');
           loadTweets();
