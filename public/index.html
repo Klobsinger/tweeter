@@ -27,6 +27,7 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/scripts/tweetSlide.js"></script>
   </head>
 
   <body>
@@ -56,7 +57,7 @@
           <p class="error-text">An error has occurred.</p>
           <span class="error-icon right-icon">⚠</span>
         </div>
-        <form action="/tweets" method="POST">
+        <form id="tweet-form" action="/tweets" method="POST">
           <div class="tweet-area">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
