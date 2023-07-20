@@ -14,6 +14,11 @@ html {
  * Global layout stuff
  */
 
+ /* max width logic for extra large displays*/
+ .layout {
+  max-width: 800px !important;
+}
+
  body {
   background-color: #f4f1ec;
   font-size: 24px;
@@ -23,8 +28,8 @@ html {
   align-items: center;
   justify-content: center;
 }
-
-@media only screen and (min-width: 768px) {
+/* changes website style after 769px from single column to row with profile on left and tweets on right*/
+@media only screen and (min-width: 769px) {
   body {
     flex-direction: row;
     align-items: flex-start;
@@ -45,16 +50,33 @@ main.container {
   background-color: #f4f1ec;
   width: 90%;
 }
-
-@media only screen and (min-width: 768px) {
+/* logic for tweets taking up 60 percent screen space*/
+@media only screen and (min-width: 769px) {
   main.container {
     width: 60%;
   }
 }
-
+/* class to give html words some bold lettering*/
 .text-emphasis {
   font-family: 'Source Sans 3', sans-serif;
   font-weight: bolder !important;
+}
+
+.error-message {
+  position: fixed;
+  opacity: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  color: white;
+  border: 4px solid black;
+  font-weight: bold;
+  pointer-events: none;
+}
+  /*error message animation that plays when tag is added*/
+.error-message.show {
+  animation: opacityAnimation 3s ease;
 }
 
 /* animation for error box */
@@ -72,28 +94,31 @@ main.container {
   100% { opacity: 0; }
 }
 
-.error-message {
-  position: fixed;
-  opacity: 0;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
-  color: white;
-  border: 4px solid black;
-  font-weight: bold;
-  pointer-events: none;
-}
-
-.error-message.show {
-  opacity: 0;
-  height: auto;
-  animation: opacityAnimation 3s ease;
-}
-
 .error-icon {
   padding-left: 50px;
   padding-right: 50px;
   font-weight: lighter;
   font-size: 2em;
+}
+
+/* scroll button while visible*/
+.bottom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+/* tag none which hides scroll up button*/
+.bottom-button.none {
+  display: none;
 }
