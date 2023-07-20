@@ -29,7 +29,7 @@ html {
   justify-content: center;
 }
 /* changes website style after 769px from single column to row with profile on left and tweets on right*/
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1024px) {
   body {
     flex-direction: row;
     align-items: flex-start;
@@ -51,7 +51,7 @@ main.container {
   width: 90%;
 }
 /* logic for tweets taking up 60 percent screen space*/
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1024px) {
   main.container {
     width: 60%;
   }

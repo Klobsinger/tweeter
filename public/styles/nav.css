@@ -13,9 +13,8 @@ nav {
 }
 
 /*styling for smaller screens removing static top nav bar for extra room and having it match profile color / background*/
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1023.9px) {
 nav {
-  position: static;
   background-color: #cc8800;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png")
 }
