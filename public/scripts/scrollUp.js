@@ -4,6 +4,7 @@ $(document).ready(function() {
   const textInput = $('#tweet-text');
   const tweetForm = $('#tweet-form');
   const bottomButton = $('.bottom-button');
+  const navRight = $('.nav-right');
   //pixles scroll threshhold
   const scrollThreshold = 500;
 
@@ -12,9 +13,12 @@ $(document).ready(function() {
     if ($(this).scrollTop() > scrollThreshold) {
       //the buttons css class is removed revealing the button
       bottomButton.removeClass('none');
+      //hides write a new tweet nav if scrolled down
+      navRight.hide();
     } else {
       //if not then the button stays hidden
       bottomButton.addClass('none');
+      navRight.show();
     }
   });
 
