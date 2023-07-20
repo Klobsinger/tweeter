@@ -47,11 +47,11 @@ $(document).ready(function() {
       const formData = $(this).serialize();
       $.post('/tweets', formData)
         .then(function() {
-          // Clear the textarea after posting is successful 
-        $('#tweet-text').val('');
-        //resets counter to max length after posting
-        $('.counter').text(140)
-         // removes the css classes low and negative so counter css colors reset apon tweeting
+          // Clear the textarea after posting is successful
+          $('#tweet-text').val('');
+          //resets counter to max length after posting
+          $('.counter').text(140);
+          // removes the css classes low and negative so counter css colors reset apon tweeting
           $('.counter').removeClass('low');
           $('.counter').removeClass('negative');
           //after tweeting focuses text input form again for rapid tweeting
