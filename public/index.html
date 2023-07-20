@@ -41,11 +41,11 @@
       </div>
     </nav>
     <header class="page-header">
-      <div>
+      <div class="layout">
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
-      <div class="name-container">
+      <div class="name-container layout">
     <h2><span class="text-emphasis">Kevin</span> Lobo</h2>
   </div>
   </header>
@@ -53,27 +53,27 @@
      <!-- html for tweet submission -->
     <main class="container">
       <section class="new-tweet">
-        <div class="error-message">
+        <div class="error-message layout">
           <span class="error-icon left-icon">⚠</span>
           <p class="error-text">An error has occurred.</p>
           <span class="error-icon right-icon">⚠</span>
         </div>
         <form id="tweet-form" action="/tweets" method="POST">
-          <div class="tweet-area">
+          <div class="tweet-area layout">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           </div>
-          <div class="tweet-actions">
+          <div class="tweet-actions layout">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
-        <article class="tweet-container" id="tweet-container">
+        <article class="tweet-container layout" id="tweet-container">
           <!-- new tweets get pushed here-->
         </article>
       </section>
     </main>
-    <div class="bottom-button none">
+    <div class="bottom-button none layout">
     <i class="fa-solid fa-angles-up fa-bounce"></i>
   </div>
   </body>
