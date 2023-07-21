@@ -25,7 +25,7 @@ $(document).ready(function() {
     const errorText = errorMessage.find('.error-text');
     const tweetText = $('#tweet-text');
     //if user inputs a blank tweet
-    if (tweetText.val().length === 0) {
+    if (tweetText.val().trim().length === 0) {
       //removing show class to allow error boxes to play limitlessly
       errorMessage.removeClass('show');
       //adding class show which uses css to reveal error box
@@ -36,7 +36,7 @@ $(document).ready(function() {
       //applying unique error message for empty tweet
       errorText.text('ERROR Empty Tweet ya Dingus');
     }   //if user inputs more then tweet limit
-    if (tweetText.val().length > 140) {
+    else if (tweetText.val().length > 140) {
       errorMessage.removeClass('show');
       setTimeout(function() {
         errorMessage.addClass('show');
@@ -59,6 +59,9 @@ $(document).ready(function() {
           //removing css class apon posting hidding error message
           errorMessage.removeClass('show');
           loadTweets();
+        })
+        .catch(function (error) {
+        console.error('Error posting tweet:', error);
         });
     }
   });
@@ -115,15 +118,18 @@ $(document).ready(function() {
  *
  * @returns {void}
  */
-  const loadTweets = function() {
-    $.ajax('/tweets', { method: 'GET' })
-      .then(function(users) {
-        users.forEach(function(user) {
-          const timeSince = timeago.format(user.created_at);
-          user.created_at = timeSince;
-        });
-        renderTweets(users);
+const loadTweets = function() {
+  $.ajax('/tweets', { method: 'GET' })
+    .then(function(users) {
+      users.forEach(function(user) {
+        const timeSince = timeago.format(user.created_at);
+        user.created_at = timeSince;
       });
-  };
+      renderTweets(users);
+    })
+    .catch(function (error) {
+      console.error('Error fetching tweets:', error);
+    });
+};
   loadTweets();
 });
